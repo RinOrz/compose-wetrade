@@ -18,6 +18,9 @@ package com.example.androiddevchallenge.ui.home
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.draggable
+import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -28,7 +31,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
@@ -144,17 +146,23 @@ fun Home(navController: NavHostController) {
         Image(
             painter = painterResource(id = R.drawable.ic_home_illos),
             contentDescription = TODODescription,
-            modifier = Modifier.weight(1f).fillMaxWidth().padding(16.dp),
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxWidth()
+                .padding(16.dp),
             contentScale = ContentScale.FillWidth
         )
         Spacer(modifier = Modifier.height(16.dp))
-        Button(
-            onClick = { navController.navigate(Screen.Positions.route) },
+        val draggableState = rememberDraggableState {
+            if (it < 320) navController.navigate(Screen.Positions.route)
+        }
+        Box(
+            contentAlignment = Alignment.Center,
             modifier = Modifier
-                .height(54.dp)
-                .fillMaxWidth(),
-            colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
-            shape = RectangleShape
+                .height(64.dp)
+                .fillMaxWidth()
+                .background(Color.White)
+                .draggable(draggableState, Orientation.Vertical)
         ) {
             Text("Positions", style = MaterialTheme.typography.subtitle1)
         }

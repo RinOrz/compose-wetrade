@@ -17,6 +17,9 @@ package com.example.androiddevchallenge.ui.positions
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.draggable
+import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -28,6 +31,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.data.Position
 import com.example.androiddevchallenge.ui.theme.customGreen
@@ -36,11 +40,15 @@ import com.example.androiddevchallenge.util.TODODescription
 import dev.chrisbanes.accompanist.insets.statusBarsHeight
 
 @Composable
-fun Positions() {
+fun Positions(navController: NavHostController) {
+    val draggableState = rememberDraggableState {
+        if (it > 140) navController.popBackStack()
+    }
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White)
+            .draggable(draggableState, Orientation.Vertical)
     ) {
         Spacer(modifier = Modifier.statusBarsHeight())
         Text(

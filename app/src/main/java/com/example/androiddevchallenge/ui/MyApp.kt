@@ -51,7 +51,7 @@ fun MyApp() {
                 composable(Screen.Welcome.route) { Welcome(navController) }
                 composable(Screen.Login.route) { Login(navController) }
                 composable(Screen.Home.route) { Home(navController) }
-                composable(Screen.Positions.route) { Positions() }
+                composable(Screen.Positions.route) { Positions(navController) }
             }
         }
     }
