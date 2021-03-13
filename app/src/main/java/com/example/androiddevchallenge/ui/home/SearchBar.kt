@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge.ui.theme
+package com.example.androiddevchallenge.ui.home
 
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Shapes
-import androidx.compose.ui.unit.dp
+import androidx.compose.runtime.Composable
 
-val shapes = Shapes(
-    small = RoundedCornerShape(4.dp),
-    large = RoundedCornerShape(50)
-)
+@Composable
+fun SearchBar() {
+//  Row(modifier = Modifier.clip(M)) {
+//
+//  }
+}

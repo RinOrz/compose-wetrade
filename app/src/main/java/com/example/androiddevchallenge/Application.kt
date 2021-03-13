@@ -15,19 +15,14 @@
  */
 package com.example.androiddevchallenge
 
-import android.os.Bundle
-import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.WindowCompat.setDecorFitsSystemWindows
-import com.example.androiddevchallenge.ui.MyApp
-import com.example.androiddevchallenge.ui.theme.WeTradeTheme
-import dagger.hilt.android.AndroidEntryPoint
+import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
-@AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setDecorFitsSystemWindows(window, false)
-        setContent { WeTradeTheme { MyApp() } }
-    }
-}
+/**
+ * 程序的唯一的入口点
+ * The only entry point to the application.
+ *
+ * @author 凛 (https://github.com/RinOrz)
+ */
+@HiltAndroidApp
+class MyApplication : Application()

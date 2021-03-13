@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 The Android Open Source Project
+ * Copyright 2021-2021 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,13 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge.ui.theme
+package com.example.androiddevchallenge.data
 
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Shapes
-import androidx.compose.ui.unit.dp
-
-val shapes = Shapes(
-    small = RoundedCornerShape(4.dp),
-    large = RoundedCornerShape(50)
-)
+/**
+ * 储存了所有 UI 屏幕的数据
+ * Store all UI screen data.
+ *
+ * @author 凛 (https://github.com/RinOrz)
+ */
+sealed class Screen(val route: String) {
+    object Welcome : Screen("Welcome")
+    object Login : Screen("Login")
+    object Home : Screen("Home")
+    object Positions : Screen("Positions")
+}

@@ -18,6 +18,8 @@ buildscript {
     ext.kotlin_version = '1.4.31'
     ext.compose_version = '1.0.0-beta02'
     ext.coroutines_version = '1.4.2'
+    ext.google_hilt = "2.31.2-alpha"
+    ext.accompanist_version = "0.6.2"
 
     repositories {
         google()
@@ -27,6 +29,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.0-alpha09'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$google_hilt"
     }
 }
 
@@ -47,7 +50,7 @@ subprojects {
             targetExclude("$buildDir/**/*.kt")
             targetExclude('bin/**/*.kt')
 
-            ktlint("0.40.0")
+            ktlint("0.40.0").userData(["disabled_rules": "no-wildcard-imports"])
             licenseHeaderFile rootProject.file('spotless/copyright.kt')
         }
     }
